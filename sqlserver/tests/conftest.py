@@ -315,7 +315,7 @@ def dd_environment(full_e2e_config):
         raise Exception("pyodbc is not installed!")
 
     def sqlserver_can_connect():
-        pwd = 'Password;{123' 
+        pwd = 'Password;{123'
         escaped_pwd = pwd.replace('}', '}}').replace('{', '{{')
 
         conn_str = 'DRIVER={};Server={};Database=master;UID=sa;PWD={};TrustServerCertificate=yes;'.format(
