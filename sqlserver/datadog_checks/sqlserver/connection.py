@@ -638,9 +638,8 @@ class Connection(object):
             conn_str += 'UID={};'.format(username)
         self.log.debug("Connection string (before password) %s", conn_str)
         if password:
-            conn_str += 'PWD={};'.format(password)
-            # escaped_password = password.replace('{', '{{').replace('}', '}}')
-            # conn_str += 'PWD={{{}}};'.format(escaped_password)
+            escaped_password = password.replace('{', '{{').replace('}', '}}')
+            conn_str += 'PWD={{{}}};'.format(escaped_password)
 
         return conn_str
 
