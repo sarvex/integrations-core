@@ -7,7 +7,7 @@ services:
                 - SQLSERVER_IMAGE_TAG=${SQLSERVER_IMAGE_TAG}
         platform: linux/amd64
         environment:
-            SA_PASSWORD: "Password123"
+            SA_PASSWORD: "Password;{123"
             ACCEPT_EULA: "Y"
             INIT_SCRIPT: "aoag_primary.sql"
             INIT_WAIT: 30
@@ -28,7 +28,7 @@ services:
                 - SQLSERVER_IMAGE_TAG=${SQLSERVER_IMAGE_TAG}
         platform: linux/amd64
         environment:
-            SA_PASSWORD: "Password123"
+            SA_PASSWORD: "Password;{123"
             ACCEPT_EULA: "Y"
             INIT_SCRIPT: "aoag_secondary.sql"
             INIT_WAIT: 50
