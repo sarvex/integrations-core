@@ -315,8 +315,11 @@ def dd_environment(full_e2e_config):
         raise Exception("pyodbc is not installed!")
 
     def sqlserver_can_connect():
-        conn_str = 'DRIVER={};Server={};Database=master;UID=sa;PWD=Password;{123;TrustServerCertificate=yes;'.format(
-            get_local_driver(), DOCKER_SERVER
+        pwd = 'Password;{123' 
+        escaped_pwd = pwd.replace('}', '}}').replace('{', '{{')
+
+        conn_str = 'DRIVER={};Server={};Database=master;UID=sa;PWD={};TrustServerCertificate=yes;'.format(
+            get_local_driver(), DOCKER_SERVER, escaped_pwd
         )
         pyodbc.connect(conn_str, timeout=DEFAULT_TIMEOUT, autocommit=True)
 
